@@ -2,13 +2,17 @@ package com.storyblocks.storyblocksservice.repository;
 
 import com.storyblocks.storyblocksservice.model.Block;
 import com.storyblocks.storyblocksservice.model.Story;
+import com.storyblocks.storyblocksservice.model.User;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
 
-import java.util.List;
+import java.util.Set;
 
-public interface BlocksRepository extends PagingAndSortingRepository<Block, Long>, CrudRepository<Block, Long> {
+public interface BlocksRepository extends CrudRepository<Block, Long> {
 
-    List<Block> findAllByStory(Story story);
+    Set<Block> findAllByStory(Story story);
+
+    Set<Block> findAllByAuthor(User author);
+
+    Set<Block> findAllByStoryAndAuthor(Story story, User author);
 
 }

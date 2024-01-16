@@ -18,6 +18,9 @@ public class Block {
     @ManyToOne
     private Story story;
 
+    @ManyToOne
+    private User author;
+
     @Column(name = "title")
     private String title;
 
