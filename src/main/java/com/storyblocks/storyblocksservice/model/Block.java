@@ -21,14 +21,20 @@ public class Block {
     @ManyToOne
     private User author;
 
-    @Column(name = "title")
+    @Column
     private String title;
 
-    @Column(name = "type")
+    @Column
     private String type;
 
-    @Column(name = "visibility")
+    @Column
     private String visibility;
+
+    @Column(name = "protect_inclusions")
+    private boolean protectInclusions = true;
+
+    @Column(name = "protect_mentions")
+    private boolean protectMentions = false;
 
     @OneToMany(mappedBy = "firstBlock")
     private Set<BlockAssociation> primaryAssociations = new HashSet<>();
