@@ -23,10 +23,10 @@ public class BlockAssociation {
     @Column(name = "type")
     private String type;
 
-    @Column(name = "is_bidirectional")
-    private boolean isBidirectional;
-
     @Column(name = "is_canon")
     private boolean isCanon;
+
+    @Column
+    private String description;
 
 }
