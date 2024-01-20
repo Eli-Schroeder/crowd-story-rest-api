@@ -2,6 +2,7 @@ package com.storyblocks.storyblocksservice.service.impl;
 
 import com.storyblocks.storyblocksservice.exception.ResourceNotFoundException;
 import com.storyblocks.storyblocksservice.model.Story;
+import com.storyblocks.storyblocksservice.model.User;
 import com.storyblocks.storyblocksservice.repository.StoriesRepository;
 import com.storyblocks.storyblocksservice.service.StoriesService;
 import org.springframework.stereotype.Service;
@@ -23,9 +24,8 @@ public class StoriesServiceImplementation implements StoriesService {
     }
 
     @Override
-    public Story getStoryById(long id) {
-        // return storiesRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Story", "Id", id));
-        return null;
+    public Story getStoryByIdAndAuthor(User author, long id) {
+        return storiesRepository.findByIdAndAuthor(author, id).orElseThrow(() -> new ResourceNotFoundException("Story", "Id", id));
     }
 
     @Override
