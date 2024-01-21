@@ -9,8 +9,8 @@ public interface StoriesService {
 
     Story getStoryByIdAndAuthor(User author, long id);
 
-    Story updateStory(Story story, long id);
+    Story updateStory(User author, Story story, long id);
 
-    void deleteStory(long id);
+    void deleteStory(User author, long id);
 
 }

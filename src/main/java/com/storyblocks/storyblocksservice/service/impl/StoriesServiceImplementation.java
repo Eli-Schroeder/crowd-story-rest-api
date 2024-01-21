@@ -29,22 +29,21 @@ public class StoriesServiceImplementation implements StoriesService {
     }
 
     @Override
-    public Story updateStory(Story story, long id) {
-//        Story existingStory = storiesRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Story", "Id", id));
-//        existingStory.setAuthor(story.getAuthor());
-//        existingStory.setTitle(story.getTitle());
-//        existingStory.setBlocks(story.getBlocks());
-//        existingStory.setCollaborators(story.getCollaborators());
-//        existingStory.setVisibility(story.getVisibility());
-//        storiesRepository.save(existingStory);
-//        return existingStory;
-        return null;
+    public Story updateStory(User author, Story story, long id) {
+        Story existingStory = storiesRepository.findByIdAndAuthor(author, id).orElseThrow(() -> new ResourceNotFoundException("Story", "Id", id));
+        existingStory.setAuthor(story.getAuthor());
+        existingStory.setTitle(story.getTitle());
+        existingStory.setBlocks(story.getBlocks());
+        existingStory.setCollaborators(story.getCollaborators());
+        existingStory.setVisibility(story.getVisibility());
+        storiesRepository.save(existingStory);
+        return existingStory;
     }
 
     @Override
-    public void deleteStory(long id) {
-//        storiesRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Story", "Id", id));
-//        storiesRepository.deleteById(id);
+    public void deleteStory(User author, long id) {
+        storiesRepository.findByIdAndAuthor(author, id).orElseThrow(() -> new ResourceNotFoundException("Story", "Id", id));
+        storiesRepository.deleteById(id);
     }
 
 }
