@@ -40,14 +40,14 @@ public class UsersRepositoryTests {
 
     @Test
     void getByUsername() {
-        Optional<User> findUserResult = repository.findUserByUsername("felix");
+        Optional<User> findUserResult = repository.findByUsername("felix");
         assertTrue(findUserResult.isPresent());
         assertEquals(user, findUserResult.get());
     }
 
     @Test
     void getByUsernameNotFound() {
-        Optional<User> findUserResult = repository.findUserByUsername("opal");
+        Optional<User> findUserResult = repository.findByUsername("opal");
         assertTrue(findUserResult.isEmpty());
     }
 
