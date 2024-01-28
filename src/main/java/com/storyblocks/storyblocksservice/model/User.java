@@ -2,19 +2,36 @@ package com.storyblocks.storyblocksservice.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.*;
 
 @Data
 @Entity
+@EqualsAndHashCode
+@NoArgsConstructor
 @Table(name = "users")
 public class User implements UserDetails {
 
+    public User(String username,
+                   String email,
+                   String password,
+                   UserRole userRole,
+                   String displayName) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.role = userRole;
+        this.displayName = displayName;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long user_id;
+    private long userId;
 
     @Column(name = "username", unique = true)
     private String username;
@@ -25,22 +42,26 @@ public class User implements UserDetails {
     @ManyToMany(mappedBy = "collaborators")
     private Set<Story> coauthored = new HashSet<>();
 
+    private String email;
+
+    private String displayName;
+
     private String password;
 
     private boolean accountNonExpired;
 
     private boolean accountNonLocked;
 
-    private boolean credentialsNonExpired;
+    private boolean enabled = false;
 
-    private boolean enabled;
-
-    @OneToMany(mappedBy = "authUserDetails", fetch = FetchType.EAGER)
-    private Set<UserAuthority> authorities;
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
+        SimpleGrantedAuthority authority =
+                new SimpleGrantedAuthority(role.name());
+        return Collections.singletonList(authority);
     }
 
     @Override
@@ -60,7 +81,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return credentialsNonExpired;
+        return true;
     }
 
     @Override
