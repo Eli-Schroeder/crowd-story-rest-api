@@ -18,7 +18,7 @@ public class JpaUserDetailsManager implements UserDetailsManager {
     @Override
     public User loadUserByUsername(String username) throws UsernameNotFoundException {
         return repository.findByUsername(username).orElseThrow(
-                () -> new UsernameNotFoundException("No user found with username = " + username));
+                () -> new UsernameNotFoundException("No user found with username " + username));
     }
 
     @Override
@@ -34,7 +34,7 @@ public class JpaUserDetailsManager implements UserDetailsManager {
     @Override
     public void deleteUser(String username) {
         User userDetails = repository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("No User found for username -> " + username));
+                .orElseThrow(() -> new UsernameNotFoundException("No User found with username " + username));
         repository.delete(userDetails);
     }
 
@@ -42,7 +42,7 @@ public class JpaUserDetailsManager implements UserDetailsManager {
     @Transactional
     public void changePassword(String oldPassword, String newPassword) {
         User userDetails = repository.findByPassword(oldPassword)
-                .orElseThrow(() -> new UsernameNotFoundException("Invalid password "));
+                .orElseThrow(() -> new UsernameNotFoundException("Invalid password."));
         userDetails.setPassword(newPassword);
         repository.save(userDetails);
     }

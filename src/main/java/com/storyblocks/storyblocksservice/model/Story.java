@@ -15,7 +15,7 @@ public class Story {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long story_id;
+    private long storyId;
 
     @ManyToOne
     private User author;

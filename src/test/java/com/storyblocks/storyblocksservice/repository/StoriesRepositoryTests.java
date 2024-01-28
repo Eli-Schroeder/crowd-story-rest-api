@@ -50,7 +50,7 @@ public class StoriesRepositoryTests {
 
     @Test
     void getById() {
-        Optional<Story> findStoryResult = storiesRepository.findById(second_story.getStory_id());
+        Optional<Story> findStoryResult = storiesRepository.findById(second_story.getStoryId());
         assertTrue(findStoryResult.isPresent());
         Story response = findStoryResult.get();
         Hibernate.initialize(response);
@@ -80,7 +80,7 @@ public class StoriesRepositoryTests {
 
     @Test
     void saveStory(){
-        Long id = first_story.getStory_id();
+        Long id = first_story.getStoryId();
         first_story.setTitle("Felix and His Lesser Sidekick, Schultz");
         storiesRepository.save(first_story);
         Optional<Story> retrieved = storiesRepository.findById(id);
@@ -90,7 +90,7 @@ public class StoriesRepositoryTests {
 
     @Test
     void deleteStory() {
-        Long id = first_story.getStory_id();
+        Long id = first_story.getStoryId();
         storiesRepository.delete(first_story);
         Optional<Story> findStoryResult = storiesRepository.findById(id);
         assertTrue(findStoryResult.isEmpty());

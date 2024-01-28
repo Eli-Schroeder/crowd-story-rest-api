@@ -25,12 +25,12 @@ public class StoriesServiceImplementation implements StoriesService {
 
     @Override
     public Story getStoryByIdAndAuthor(User author, long id) {
-        return storiesRepository.findByIdAndAuthor(author, id).orElseThrow(() -> new ResourceNotFoundException("Story", "Id", id));
+        return storiesRepository.findByAuthorAndStoryId(author, id).orElseThrow(() -> new ResourceNotFoundException("Story", "Id", id));
     }
 
     @Override
     public Story updateStory(User author, Story story, long id) {
-        Story existingStory = storiesRepository.findByIdAndAuthor(author, id).orElseThrow(() -> new ResourceNotFoundException("Story", "Id", id));
+        Story existingStory = storiesRepository.findByAuthorAndStoryId(author, id).orElseThrow(() -> new ResourceNotFoundException("Story", "Id", id));
         existingStory.setAuthor(story.getAuthor());
         existingStory.setTitle(story.getTitle());
         existingStory.setBlocks(story.getBlocks());
@@ -42,7 +42,7 @@ public class StoriesServiceImplementation implements StoriesService {
 
     @Override
     public void deleteStory(User author, long id) {
-        storiesRepository.findByIdAndAuthor(author, id).orElseThrow(() -> new ResourceNotFoundException("Story", "Id", id));
+        storiesRepository.findByAuthorAndStoryId(author, id).orElseThrow(() -> new ResourceNotFoundException("Story", "Id", id));
         storiesRepository.deleteById(id);
     }
 

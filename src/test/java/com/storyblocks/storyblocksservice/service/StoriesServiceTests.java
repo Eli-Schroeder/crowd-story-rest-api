@@ -50,14 +50,14 @@ public class StoriesServiceTests {
     void getStoryById() {
         Story story = new Story();
         story.setTitle("Felix the Cat");
-        Mockito.when(repository.findByIdAndAuthor(user, story.getStory_id())).thenReturn(Optional.of(story));
-        Story retrieved = service.getStoryByIdAndAuthor(user,story.getStory_id());
+        Mockito.when(repository.findByAuthorAndStoryId(user, story.getStoryId())).thenReturn(Optional.of(story));
+        Story retrieved = service.getStoryByIdAndAuthor(user,story.getStoryId());
         assertSame(story, retrieved);
     }
 
     @Test
     void getStoryByIdNotFound() {
-        Mockito.when(repository.findByIdAndAuthor(user, 1L)).thenReturn(Optional.empty());
+        Mockito.when(repository.findByAuthorAndStoryId(user, 1L)).thenReturn(Optional.empty());
         assertThrows(ResourceNotFoundException.class, () -> service.getStoryByIdAndAuthor(user, 1L));
     }
 
@@ -65,18 +65,18 @@ public class StoriesServiceTests {
     void updateStory() {
         Story existingStory = new Story();
         existingStory.setTitle("Felix the Cat");
-        Mockito.when(repository.findByIdAndAuthor(user, existingStory.getStory_id())).thenReturn(Optional.of(existingStory));
+        Mockito.when(repository.findByAuthorAndStoryId(user, existingStory.getStoryId())).thenReturn(Optional.of(existingStory));
         Mockito.when(repository.save(existingStory)).thenReturn(existingStory);
         Story updatedStory = new Story();
         updatedStory.setTitle("Felix the Very Cool Cat");
-        Story savedUpdatedStory = service.updateStory(user, updatedStory, existingStory.getStory_id());
+        Story savedUpdatedStory = service.updateStory(user, updatedStory, existingStory.getStoryId());
         assertEquals(updatedStory, savedUpdatedStory);
         assertSame(existingStory, savedUpdatedStory);
     }
 
     @Test
     void updateStoryNotFound(){
-        Mockito.when(repository.findByIdAndAuthor(user, 1L)).thenReturn(Optional.empty());
+        Mockito.when(repository.findByAuthorAndStoryId(user, 1L)).thenReturn(Optional.empty());
         Story updatedStory = new Story();
         updatedStory.setTitle("Felix the Very Cool Cat");
         assertThrows(ResourceNotFoundException.class, () -> service.updateStory(user, updatedStory, 1L));
@@ -86,14 +86,14 @@ public class StoriesServiceTests {
     void deleteStory(){
         Story story = new Story();
         story.setTitle("Felix the Cat");
-        Mockito.when(repository.findByIdAndAuthor(user, story.getStory_id())).thenReturn(Optional.of(story));
-        service.deleteStory(user, story.getStory_id());
-        Mockito.verify(repository).deleteById(story.getStory_id());
+        Mockito.when(repository.findByAuthorAndStoryId(user, story.getStoryId())).thenReturn(Optional.of(story));
+        service.deleteStory(user, story.getStoryId());
+        Mockito.verify(repository).deleteById(story.getStoryId());
     }
 
     @Test
     void deleteStoryNotFound(){
-        Mockito.when(repository.findByIdAndAuthor(user, 1L)).thenReturn(Optional.empty());
+        Mockito.when(repository.findByAuthorAndStoryId(user, 1L)).thenReturn(Optional.empty());
         assertThrows(ResourceNotFoundException.class, () -> service.deleteStory(user, 1L));
     }
 }

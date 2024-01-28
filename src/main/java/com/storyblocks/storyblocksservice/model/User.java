@@ -36,7 +36,7 @@ public class User implements UserDetails {
     private boolean enabled;
 
     @OneToMany(mappedBy = "authUserDetails", fetch = FetchType.EAGER)
-    private Set<GrantedAuthority> authorities;
+    private Set<UserAuthority> authorities;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

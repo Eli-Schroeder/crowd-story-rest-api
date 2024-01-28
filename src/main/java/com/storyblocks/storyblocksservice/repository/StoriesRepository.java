@@ -13,7 +13,7 @@ import java.util.Optional;
 @Repository
 public interface StoriesRepository extends PagingAndSortingRepository<Story, Long>, CrudRepository<Story, Long> {
 
-    Optional<Story> findByIdAndAuthor(User author, Long id);
+    Optional<Story> findByAuthorAndStoryId(User author, Long story_id);
 
     List<Story> findByAuthor(User author, Pageable pageable);
 
