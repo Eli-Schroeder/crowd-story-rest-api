@@ -12,7 +12,7 @@ public class Block {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long block_id;
+    private long blockId;
 
     @ManyToOne
     private Story story;

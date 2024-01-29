@@ -18,10 +18,10 @@ public class RegistrationService {
     @Autowired
     private ConfirmationTokenService confirmationTokenService;
 
-    private String validator = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+    private final String validator = "^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
 
     public String register(RegistrationRequest request){
-        boolean isValidEmail = request.getPassword().matches(validator);
+        boolean isValidEmail = request.getEmail().matches(validator);
         if(!isValidEmail){
             throw new IllegalStateException("Invalid email");
         }

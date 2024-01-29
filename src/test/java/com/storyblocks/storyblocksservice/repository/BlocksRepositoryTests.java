@@ -77,7 +77,7 @@ public class BlocksRepositoryTests {
 
     @Test
     void findById() {
-        Optional<Block> findByIdResult = blocksRepository.findById(first_block.getBlock_id());
+        Optional<Block> findByIdResult = blocksRepository.findById(first_block.getBlockId());
         assertTrue(findByIdResult.isPresent());
         assertEquals(first_block, findByIdResult.get());
     }
@@ -113,7 +113,7 @@ public class BlocksRepositoryTests {
 
     @Test
     void saveBlock() {
-        Long id = first_block.getBlock_id();
+        Long id = first_block.getBlockId();
         first_block.setTitle("Chapter 1: Felix the Great");
         blocksRepository.save(first_block);
         Optional<Block> findByIdResult = blocksRepository.findById(id);
@@ -123,7 +123,7 @@ public class BlocksRepositoryTests {
 
     @Test
     void deleteBlock() {
-        Long id = second_block.getBlock_id();
+        Long id = second_block.getBlockId();
         blocksRepository.delete(second_block);
         Optional<Block> findByIdResult = blocksRepository.findById(id);
         assertTrue(findByIdResult.isEmpty());
