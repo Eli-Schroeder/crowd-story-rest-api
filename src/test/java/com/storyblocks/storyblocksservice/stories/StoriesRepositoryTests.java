@@ -1,7 +1,9 @@
-package com.storyblocks.storyblocksservice.repository;
+package com.storyblocks.storyblocksservice.stories;
 
-import com.storyblocks.storyblocksservice.model.Story;
-import com.storyblocks.storyblocksservice.model.User;
+import com.storyblocks.storyblocksservice.stories.Story;
+import com.storyblocks.storyblocksservice.stories.StoriesRepository;
+import com.storyblocks.storyblocksservice.users.User;
+import com.storyblocks.storyblocksservice.users.UsersRepository;
 import org.hibernate.Hibernate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

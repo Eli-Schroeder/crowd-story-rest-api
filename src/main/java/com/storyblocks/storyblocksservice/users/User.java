@@ -1,5 +1,6 @@
-package com.storyblocks.storyblocksservice.model;
+package com.storyblocks.storyblocksservice.users;
 
+import com.storyblocks.storyblocksservice.stories.Story;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

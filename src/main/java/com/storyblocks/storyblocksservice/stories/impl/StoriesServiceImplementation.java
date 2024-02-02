@@ -1,10 +1,10 @@
-package com.storyblocks.storyblocksservice.service.impl;
+package com.storyblocks.storyblocksservice.stories.impl;
 
 import com.storyblocks.storyblocksservice.exception.ResourceNotFoundException;
-import com.storyblocks.storyblocksservice.model.Story;
-import com.storyblocks.storyblocksservice.model.User;
-import com.storyblocks.storyblocksservice.repository.StoriesRepository;
-import com.storyblocks.storyblocksservice.service.StoriesService;
+import com.storyblocks.storyblocksservice.stories.StoriesRepository;
+import com.storyblocks.storyblocksservice.stories.StoriesService;
+import com.storyblocks.storyblocksservice.stories.Story;
+import com.storyblocks.storyblocksservice.users.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

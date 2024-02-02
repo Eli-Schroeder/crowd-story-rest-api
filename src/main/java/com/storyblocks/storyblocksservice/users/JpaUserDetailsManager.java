@@ -1,15 +1,9 @@
-package com.storyblocks.storyblocksservice.service.impl;
+package com.storyblocks.storyblocksservice.users;
 
-import com.storyblocks.storyblocksservice.model.ConfirmationToken;
-import com.storyblocks.storyblocksservice.model.User;
-import com.storyblocks.storyblocksservice.repository.UsersRepository;
 import jakarta.transaction.Transactional;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Service;

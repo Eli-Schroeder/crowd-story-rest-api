@@ -1,7 +1,6 @@
-package com.storyblocks.storyblocksservice.service;
+package com.storyblocks.storyblocksservice.stories;
 
-import com.storyblocks.storyblocksservice.model.Story;
-import com.storyblocks.storyblocksservice.model.User;
+import com.storyblocks.storyblocksservice.users.User;
 
 public interface StoriesService {
 

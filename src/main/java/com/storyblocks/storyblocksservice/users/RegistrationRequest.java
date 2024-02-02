@@ -1,4 +1,4 @@
-package com.storyblocks.storyblocksservice.controller;
+package com.storyblocks.storyblocksservice.users;
 
 import lombok.*;
 

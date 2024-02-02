@@ -1,6 +1,7 @@
-package com.storyblocks.storyblocksservice.repository;
+package com.storyblocks.storyblocksservice.users;
 
-import com.storyblocks.storyblocksservice.model.User;
+import com.storyblocks.storyblocksservice.users.User;
+import com.storyblocks.storyblocksservice.users.UsersRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

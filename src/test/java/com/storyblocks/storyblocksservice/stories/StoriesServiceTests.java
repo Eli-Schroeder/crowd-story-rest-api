@@ -1,10 +1,10 @@
-package com.storyblocks.storyblocksservice.service;
+package com.storyblocks.storyblocksservice.stories;
 
 import com.storyblocks.storyblocksservice.exception.ResourceNotFoundException;
-import com.storyblocks.storyblocksservice.model.Story;
-import com.storyblocks.storyblocksservice.model.User;
-import com.storyblocks.storyblocksservice.repository.StoriesRepository;
-import com.storyblocks.storyblocksservice.service.impl.StoriesServiceImplementation;
+import com.storyblocks.storyblocksservice.stories.Story;
+import com.storyblocks.storyblocksservice.users.User;
+import com.storyblocks.storyblocksservice.stories.StoriesRepository;
+import com.storyblocks.storyblocksservice.stories.impl.StoriesServiceImplementation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

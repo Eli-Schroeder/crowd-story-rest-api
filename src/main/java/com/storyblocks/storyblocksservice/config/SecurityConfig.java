@@ -1,7 +1,6 @@
 package com.storyblocks.storyblocksservice.config;
 
-import com.storyblocks.storyblocksservice.model.UserRole;
-import com.storyblocks.storyblocksservice.service.impl.JpaUserDetailsManager;
+import com.storyblocks.storyblocksservice.users.JpaUserDetailsManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
