@@ -1,21 +1,22 @@
 package com.storyblocks.storyblocksservice.service;
 
+import com.storyblocks.storyblocksservice.model.ConfirmationToken;
 import com.storyblocks.storyblocksservice.model.User;
 import com.storyblocks.storyblocksservice.repository.UsersRepository;
+import com.storyblocks.storyblocksservice.service.impl.ConfirmationTokenService;
 import com.storyblocks.storyblocksservice.service.impl.JpaUserDetailsManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
+import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -29,6 +30,15 @@ public class UserDetailsManagerTests {
     @Mock
     private UsersRepository repository;
 
+    @Mock
+    private PasswordEncoder passwordEncoder;
+
+    @Mock
+    private ConfirmationTokenService confirmationTokenService;
+
+    @Captor
+    private ArgumentCaptor<ConfirmationToken> tokenCaptor;
+
     private User user;
 
     @BeforeEach
@@ -36,6 +46,8 @@ public class UserDetailsManagerTests {
         user = new User();
         user.setUsername("Felix");
         user.setPassword("password");
+        user.setEmail("felix@abc.com");
+        user.setEnabled(false);
     }
 
     @Test
@@ -88,5 +100,37 @@ public class UserDetailsManagerTests {
     void changePasswordNotFound() {
         when(repository.findByPassword("password")).thenReturn(Optional.empty());
         assertThrows(UsernameNotFoundException.class, () -> service.changePassword("password", "password_abc123"));
+    }
+
+    @Test
+    void signUpUser() {
+        when(repository.findByUsername("Felix")).thenReturn(Optional.empty());
+        when(repository.findByEmail("felix@abc.com")).thenReturn(Optional.empty());
+        when(passwordEncoder.encode("password")).thenReturn("password::encoded");
+        String token = service.signUpUser(user);
+        assertEquals("password::encoded", user.getPassword());
+        verify(repository).save(user);
+        verify(confirmationTokenService).saveConfirmationToken(tokenCaptor.capture());
+        assertEquals(token, tokenCaptor.getValue().getToken());
+    }
+
+    @Test
+    void signUpUserUsernameTaken() {
+        when(repository.findByUsername("Felix")).thenReturn(Optional.of(user));
+        assertThrows(IllegalStateException.class, () -> service.signUpUser(user));
+    }
+
+    @Test
+    void signUpEmailInUse() {
+        when(repository.findByUsername("Felix")).thenReturn(Optional.empty());
+        when(repository.findByEmail("felix@abc.com")).thenReturn(Optional.of(user));
+        assertThrows(IllegalStateException.class, () -> service.signUpUser(user));
+    }
+
+    @Test
+    void enableUser(){
+        service.enableUser(user);
+        assertTrue(user.isEnabled());
+        verify(repository).save(user);
     }
 }

@@ -5,6 +5,7 @@ import com.storyblocks.storyblocksservice.model.Story;
 import com.storyblocks.storyblocksservice.model.User;
 import com.storyblocks.storyblocksservice.repository.StoriesRepository;
 import com.storyblocks.storyblocksservice.service.StoriesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,7 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class StoriesServiceImplementation implements StoriesService {
 
-    private StoriesRepository storiesRepository;
+    @Autowired
+    private final StoriesRepository storiesRepository;
 
     public StoriesServiceImplementation(StoriesRepository repository){
         this.storiesRepository = repository;

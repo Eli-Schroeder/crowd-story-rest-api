@@ -3,6 +3,8 @@ package com.storyblocks.storyblocksservice.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Set;
+
 @Data
 @Entity
 @Table(name="blocks")
@@ -10,7 +12,7 @@ public class Block {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long block_id;
+    private long blockId;
 
     @ManyToOne
     private Story story;
@@ -32,5 +34,11 @@ public class Block {
 
     @Column(name = "protect_mentions")
     private boolean protectMentions = false;
+
+    @OneToMany(mappedBy = "firstBlock")
+    private Set<BlockAssociation> getPrimaryAssociations;
+
+    @OneToMany(mappedBy = "secondBlock")
+    private Set<BlockAssociation> getSecondaryAssociations;
 
 }

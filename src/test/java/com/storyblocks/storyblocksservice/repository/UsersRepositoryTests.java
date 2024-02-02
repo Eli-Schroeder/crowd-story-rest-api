@@ -33,7 +33,7 @@ public class UsersRepositoryTests {
 
     @Test
     void getById() {
-        Optional<User> findUserResult = repository.findById(user.getUser_id());
+        Optional<User> findUserResult = repository.findById(user.getUserId());
         assertTrue(findUserResult.isPresent());
         assertEquals(user, findUserResult.get());
     }
@@ -53,7 +53,7 @@ public class UsersRepositoryTests {
 
     @Test
     void deleteUser(){
-        Long id = user.getUser_id();
+        Long id = user.getUserId();
         repository.delete(user);
         Optional<User> findUserResult = repository.findById(id);
         assertTrue(findUserResult.isEmpty());
