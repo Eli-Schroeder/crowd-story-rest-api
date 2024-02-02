@@ -1,7 +1,6 @@
-package com.storyblocks.storyblocksservice.repository;
+package com.storyblocks.storyblocksservice.stories;
 
-import com.storyblocks.storyblocksservice.model.Story;
-import com.storyblocks.storyblocksservice.model.User;
+import com.storyblocks.storyblocksservice.users.User;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;

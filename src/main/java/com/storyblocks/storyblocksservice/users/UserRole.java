@@ -1,4 +1,4 @@
-package com.storyblocks.storyblocksservice.model;
+package com.storyblocks.storyblocksservice.users;
 
 public enum UserRole {
 

@@ -1,9 +1,5 @@
-package com.storyblocks.storyblocksservice.service.impl;
+package com.storyblocks.storyblocksservice.users;
 
-import com.storyblocks.storyblocksservice.controller.RegistrationRequest;
-import com.storyblocks.storyblocksservice.model.ConfirmationToken;
-import com.storyblocks.storyblocksservice.model.User;
-import com.storyblocks.storyblocksservice.model.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

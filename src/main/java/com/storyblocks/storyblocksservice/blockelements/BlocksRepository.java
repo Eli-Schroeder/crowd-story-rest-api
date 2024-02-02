@@ -1,8 +1,7 @@
-package com.storyblocks.storyblocksservice.repository;
+package com.storyblocks.storyblocksservice.blockelements;
 
-import com.storyblocks.storyblocksservice.model.Block;
-import com.storyblocks.storyblocksservice.model.Story;
-import com.storyblocks.storyblocksservice.model.User;
+import com.storyblocks.storyblocksservice.stories.Story;
+import com.storyblocks.storyblocksservice.users.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,8 +1,6 @@
-package com.storyblocks.storyblocksservice.service.impl;
+package com.storyblocks.storyblocksservice.users;
 
 import com.storyblocks.storyblocksservice.exception.ResourceNotFoundException;
-import com.storyblocks.storyblocksservice.model.ConfirmationToken;
-import com.storyblocks.storyblocksservice.repository.ConfirmationTokenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

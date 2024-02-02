@@ -1,5 +1,6 @@
-package com.storyblocks.storyblocksservice.model;
+package com.storyblocks.storyblocksservice.users;
 
+import com.storyblocks.storyblocksservice.users.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
