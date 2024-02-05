@@ -1,6 +1,5 @@
-package com.storyblocks.storyblocksservice.users;
+package com.storyblocks.storyblocksservice.users.registration;
 
-import com.storyblocks.storyblocksservice.users.ConfirmationToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,5 +1,8 @@
 package com.storyblocks.storyblocksservice.users;
 
+import com.storyblocks.storyblocksservice.exception.ResourceNotFoundException;
+import com.storyblocks.storyblocksservice.users.registration.ConfirmationToken;
+import com.storyblocks.storyblocksservice.users.registration.ConfirmationTokenService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -82,5 +85,10 @@ public class JpaUserDetailsManager implements UserDetailsManager {
     @Override
     public boolean userExists(String username) {
         return repository.findByUsername(username).isPresent();
+    }
+
+    public ProfileResponse getUserProfile(long userid) {
+        User user = repository.findById(userid).orElseThrow(() -> new ResourceNotFoundException("User", "Id", userid));
+        return new ProfileResponse(user.getUsername(), user.getDisplayName(), user.getEmail(), user.isEnabled(), user.getRole());
     }
 }
