@@ -2,18 +2,19 @@ package com.storyblocks.storyblocksservice.users;
 
 import com.storyblocks.storyblocksservice.stories.Story;
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.*;
 
-@Data
+@Getter
+@Setter
 @Entity
-@EqualsAndHashCode
 @NoArgsConstructor
 @Table(name = "users")
 public class User implements UserDetails {
@@ -49,9 +50,9 @@ public class User implements UserDetails {
 
     private String password;
 
-    private boolean accountNonExpired;
+    private boolean accountNonExpired = true;
 
-    private boolean accountNonLocked;
+    private boolean accountNonLocked = true;
 
     private boolean enabled = false;
 

@@ -1,11 +1,9 @@
 package com.storyblocks.storyblocksservice.users;
 
-import com.storyblocks.storyblocksservice.users.RegistrationRequest;
-import com.storyblocks.storyblocksservice.users.ConfirmationToken;
-import com.storyblocks.storyblocksservice.users.User;
-import com.storyblocks.storyblocksservice.users.ConfirmationTokenService;
-import com.storyblocks.storyblocksservice.users.JpaUserDetailsManager;
-import com.storyblocks.storyblocksservice.users.RegistrationService;
+import com.storyblocks.storyblocksservice.users.registration.ConfirmationToken;
+import com.storyblocks.storyblocksservice.users.registration.ConfirmationTokenService;
+import com.storyblocks.storyblocksservice.users.registration.RegistrationRequest;
+import com.storyblocks.storyblocksservice.users.registration.RegistrationService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

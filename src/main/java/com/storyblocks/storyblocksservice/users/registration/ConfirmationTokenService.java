@@ -1,4 +1,4 @@
-package com.storyblocks.storyblocksservice.users;
+package com.storyblocks.storyblocksservice.users.registration;
 
 import com.storyblocks.storyblocksservice.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

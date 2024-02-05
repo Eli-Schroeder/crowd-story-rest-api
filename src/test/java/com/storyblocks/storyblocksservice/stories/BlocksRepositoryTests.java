@@ -2,8 +2,6 @@ package com.storyblocks.storyblocksservice.stories;
 
 import com.storyblocks.storyblocksservice.blockelements.Block;
 import com.storyblocks.storyblocksservice.blockelements.BlocksRepository;
-import com.storyblocks.storyblocksservice.stories.Story;
-import com.storyblocks.storyblocksservice.stories.StoriesRepository;
 import com.storyblocks.storyblocksservice.users.User;
 import com.storyblocks.storyblocksservice.users.UsersRepository;
 import org.junit.jupiter.api.BeforeEach;
