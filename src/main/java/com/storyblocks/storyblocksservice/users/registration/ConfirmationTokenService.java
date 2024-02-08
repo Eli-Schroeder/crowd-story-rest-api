@@ -17,11 +17,11 @@ public class ConfirmationTokenService {
     }
 
     public ConfirmationToken getToken(String token){
-        return confirmationTokenRepository.findByToken(token).orElseThrow(() -> new ResourceNotFoundException("Token", "token", token));
+        return confirmationTokenRepository.findByToken(token).orElseThrow(() -> new ResourceNotFoundException("Token not found"));
     }
 
     public void setConfirmedAt(String tokenString){
-        ConfirmationToken token = confirmationTokenRepository.findByToken(tokenString).orElseThrow(() -> new ResourceNotFoundException("Token", "token", tokenString));
+        ConfirmationToken token = confirmationTokenRepository.findByToken(tokenString).orElseThrow(() -> new ResourceNotFoundException("Token not found"));
         token.setConfirmedAt(LocalDateTime.now());
         confirmationTokenRepository.save(token);
     }

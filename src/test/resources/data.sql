@@ -1,0 +1,1 @@
+--INSERT INTO users (user_id, account_non_expired, account_non_locked, display_name, email, enabled, password, role, username) VALUES(1, 1, 1, 'Felix', 'felix@felixthecat.com', 1, 'password', 'ROLE_USER', 'felix123')

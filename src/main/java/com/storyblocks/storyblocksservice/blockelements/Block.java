@@ -37,10 +37,10 @@ public class Block {
     @Column(name = "protect_mentions")
     private boolean protectMentions = false;
 
-    @OneToMany(mappedBy = "firstBlock")
+    @OneToMany(mappedBy = "firstBlock", cascade = CascadeType.ALL)
     private Set<BlockAssociation> getPrimaryAssociations;
 
-    @OneToMany(mappedBy = "secondBlock")
+    @OneToMany(mappedBy = "secondBlock", cascade = CascadeType.ALL)
     private Set<BlockAssociation> getSecondaryAssociations;
 
 }

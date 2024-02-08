@@ -41,7 +41,7 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "author")
     private List<Story> stories = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "collaborators")
+    @ManyToMany(mappedBy = "collaborators", cascade = CascadeType.REMOVE)
     private Set<Story> coauthored = new HashSet<>();
 
     private String email;

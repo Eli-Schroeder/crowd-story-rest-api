@@ -27,24 +27,30 @@ public class StoriesServiceImplementation implements StoriesService {
 
     @Override
     public Story getStoryByIdAndAuthor(User author, long id) {
-        return storiesRepository.findByAuthorAndStoryId(author, id).orElseThrow(() -> new ResourceNotFoundException("Story", "Id", id));
+        return storiesRepository.findByAuthorAndStoryId(author, id).orElseThrow(() -> new ResourceNotFoundException("Story not found"));
     }
 
     @Override
     public Story updateStory(User author, Story story, long id) {
-        Story existingStory = storiesRepository.findByAuthorAndStoryId(author, id).orElseThrow(() -> new ResourceNotFoundException("Story", "Id", id));
+        Story existingStory = storiesRepository.findByAuthorAndStoryId(author, id).orElseThrow(() -> new ResourceNotFoundException("Story not found"));
         existingStory.setAuthor(story.getAuthor());
         existingStory.setTitle(story.getTitle());
         existingStory.setBlocks(story.getBlocks());
         existingStory.setCollaborators(story.getCollaborators());
-        existingStory.setVisibility(story.getVisibility());
+        existingStory.setParentStory(story.getParentStory());
+        existingStory.setCanonToParent(story.isCanonToParent());
+        existingStory.setMinimumAddToStoryRole(story.getMinimumAddToStoryRole());
+        existingStory.setMinimumViewStoryRole(story.getMinimumViewStoryRole());
+        existingStory.setMinimumApproveReviewRole(story.getMinimumApproveReviewRole());
+        existingStory.setMinimumRequestReviewRole(story.getMinimumRequestReviewRole());
+        existingStory.setMinimumSkipReviewRole(story.getMinimumSkipReviewRole());
         storiesRepository.save(existingStory);
         return existingStory;
     }
 
     @Override
     public void deleteStory(User author, long id) {
-        storiesRepository.findByAuthorAndStoryId(author, id).orElseThrow(() -> new ResourceNotFoundException("Story", "Id", id));
+        storiesRepository.findByAuthorAndStoryId(author, id).orElseThrow(() -> new ResourceNotFoundException("Story not found"));
         storiesRepository.deleteById(id);
     }
 

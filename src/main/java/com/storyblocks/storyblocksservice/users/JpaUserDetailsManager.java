@@ -88,7 +88,7 @@ public class JpaUserDetailsManager implements UserDetailsManager {
     }
 
     public ProfileResponse getUserProfile(long userid) {
-        User user = repository.findById(userid).orElseThrow(() -> new ResourceNotFoundException("User", "Id", userid));
+        User user = repository.findById(userid).orElseThrow(() -> new ResourceNotFoundException("User not found"));
         return new ProfileResponse(user.getUsername(), user.getDisplayName(), user.getEmail(), user.isEnabled(), user.getRole());
     }
 }

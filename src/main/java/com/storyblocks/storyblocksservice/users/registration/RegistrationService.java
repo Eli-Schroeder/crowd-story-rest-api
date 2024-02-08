@@ -22,7 +22,7 @@ public class RegistrationService {
     public String register(RegistrationRequest request){
         boolean isValidEmail = request.getEmail().matches(validator);
         if(!isValidEmail){
-            throw new IllegalStateException("Invalid email");
+            throw new IllegalStateException("Invalid email address.");
         }
         String token = userService.signUpUser(new User(request.getUsername(), request.getEmail(), request.getPassword(), UserRole.ROLE_USER, request.getDisplayName()));
         //TODO: Form confirmation link and email to user

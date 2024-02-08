@@ -46,15 +46,7 @@ public class UsersController {
         return usersService.getUserProfile(id);
     }
 
-//    @PostMapping(path = "login")
-//    public void login(@RequestBody LoginRequest loginRequest) {
-//        Authentication authenticationRequest =
-//                UsernamePasswordAuthenticationToken.unauthenticated(loginRequest.username(), loginRequest.password());
-//        Authentication authenticationResponse =
-//                this.authenticationManager.authenticate(authenticationRequest);
-//    }
-
-    private SecurityContextRepository securityContextRepository =
+    private final SecurityContextRepository securityContextRepository =
             new HttpSessionSecurityContextRepository();
 
     @PostMapping("/login")
@@ -66,7 +58,6 @@ public class UsersController {
         context.setAuthentication(authentication);
         securityContextHolderStrategy.setContext(context);
         securityContextRepository.saveContext(context, request, response);
-        //response.setStatus(200);
     }
 
     public record LoginRequest(String username, String password) {
