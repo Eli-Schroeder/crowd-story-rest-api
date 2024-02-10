@@ -31,7 +31,7 @@ public class UsersController {
 
     private final SecurityContextHolderStrategy securityContextHolderStrategy = SecurityContextHolder.getContextHolderStrategy();
 
-    @PostMapping(path = "/register")
+    @PostMapping(path = "register")
     public String register(@RequestBody RegistrationRequest request){
         return registrationService.register(request);
     }
@@ -49,7 +49,7 @@ public class UsersController {
     private final SecurityContextRepository securityContextRepository =
             new HttpSessionSecurityContextRepository();
 
-    @PostMapping("/login")
+    @PostMapping("login")
     public void login(@RequestBody LoginRequest loginRequest, HttpServletRequest request, HttpServletResponse response) {
         UsernamePasswordAuthenticationToken token = UsernamePasswordAuthenticationToken.unauthenticated(
                 loginRequest.username(), loginRequest.password());

@@ -29,6 +29,7 @@ class SecurityConfig {
                         .requestMatchers("/user/login").permitAll()
                         .requestMatchers("/user/register").permitAll()
                         .requestMatchers("/user/confirm").permitAll()
+                        .requestMatchers("/notification/post").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .csrf(AbstractHttpConfigurer::disable);
         return http.build();
